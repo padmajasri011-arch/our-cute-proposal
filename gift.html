@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Surprise 🎁</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="gift-page">
+
+        <!-- Background decorations -->
+        <div class="gift-glow gift-glow-1"></div>
+        <div class="gift-glow gift-glow-2"></div>
+
+        <div class="floating-heart">💗</div>
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💖</div>
+
+        <div class="floating-sparkle">✦</div>
+        <div class="floating-sparkle">✧</div>
+        <div class="floating-sparkle">⋆</div>
+
+
+        <!-- Chapter heading -->
+        <header class="gift-header">
+
+            <div class="chapter-pill">
+                🎁 Chapter Three 🎁
+            </div>
+
+            <h1>
+                There's a little surprise...
+            </h1>
+
+            <p>
+                But first...
+                you have to open it. 👀💗
+            </p>
+
+        </header>
+
+
+        <!-- Main gift area -->
+        <section class="gift-container">
+
+            <!-- Cute character -->
+            <div class="gift-character">
+                🐰
+
+                <span class="character-heart">
+                    💗
+                </span>
+            </div>
+
+
+            <!-- Message -->
+            <div class="gift-message">
+
+                <span class="tiny-label">
+                    🎀 A tiny mystery 🎀
+                </span>
+
+                <h2>
+                    I kept something special
+                    <span>for you...</span>
+                </h2>
+
+                <p>
+                    It's small...
+                    it's cute...
+                    and it might make your heart
+                    go <strong>“aww”</strong>. 🥹💗
+                </p>
+
+            </div>
+
+
+            <!-- Gift box -->
+            <div class="gift-box-area">
+
+                <div class="gift-glow-ring"></div>
+
+                <div class="gift-box">
+
+                    <div class="gift-lid">
+                        <div class="gift-ribbon"></div>
+                    </div>
+
+                    <div class="gift-body">
+
+                        <div class="gift-vertical-ribbon"></div>
+
+                        <div class="gift-bow">
+                            <span></span>
+                            <span></span>
+                            <div></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="gift-shadow"></div>
+
+            </div>
+
+
+            <!-- Open button -->
+            <button class="cute-button gift-button" id="openGift">
+
+                <span>
+                    Open The Little Surprise
+                </span>
+
+                <span>
+                    🎀
+                </span>
+
+            </button>
+
+
+            <p class="gift-open-message" id="giftOpenMessage">
+                ✨ Click the gift first... ✨
+            </p>
+
+
+            <p class="gift-hint">
+                ✨ Something beautiful is waiting inside ✨
+            </p>
+
+        </section>
+
+
+        <!-- Back navigation -->
+        <a href="moments.html" class="back-link">
+            ← Go back
+        </a>
+
+
+        <footer class="tiny-footer">
+            made with a tiny bit of magic & lots of 💗
+        </footer>
+
+    </main>
+
+
+    <!-- Gift interaction -->
+    <script>
+
+        const gift = document.querySelector(".gift-box");
+        const openGift = document.getElementById("openGift");
+        const giftMessage = document.getElementById("giftOpenMessage");
+
+
+        openGift.addEventListener("click", async () => {
+
+            gift.classList.add("gift-opening");
+
+            giftMessage.textContent =
+                "🥹 Wait... something magical is happening...";
+
+            openGift.disabled = true;
+
+
+            // Send interaction to our backend
+            try {
+
+                const response = await fetch("/api/interaction", {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        action: "Gift was opened 🎁"
+                    })
+                });
+
+                const data = await response.json();
+
+                console.log("💗 Backend:", data.message);
+
+            } catch (error) {
+
+                console.error(
+                    "Could not connect to backend:",
+                    error
+                );
+
+            }
+
+
+            setTimeout(() => {
+
+                giftMessage.textContent =
+                    "💌 I think there's something inside for you...";
+
+            }, 1200);
+
+
+            setTimeout(() => {
+
+                window.location.href = "letter.html";
+
+            }, 2300);
+
+        });
+
+    </script>
+
+
+    <!-- Global website JavaScript -->
+    <script src="../js/main.js"></script>
+
+</body>
+</html>

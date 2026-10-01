@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>One Little Question 💗</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="proposal-page">
+
+    <!-- =========================
+         BACKGROUND DECORATIONS
+    ========================== -->
+
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+
+    <div class="floating-heart heart-1">💗</div>
+    <div class="floating-heart heart-2">💕</div>
+    <div class="floating-heart heart-3">💖</div>
+    <div class="floating-heart heart-4">💞</div>
+
+    <div class="sparkle sparkle-1">✦</div>
+    <div class="sparkle sparkle-2">✧</div>
+    <div class="sparkle sparkle-3">✦</div>
+    <div class="sparkle sparkle-4">✧</div>
+
+
+    <!-- =========================
+         MAIN PROPOSAL SECTION
+    ========================== -->
+
+    <main class="proposal-container">
+
+        <div class="proposal-character">
+            🐰
+        </div>
+
+        <p class="chapter-label">
+            Chapter Five · The Question 💌
+        </p>
+
+        <div class="proposal-card">
+
+            <div class="tiny-hearts">
+                💗 💕 💖 💕 💗
+            </div>
+
+            <h1>
+                I Have One<br>
+                Little Question...
+            </h1>
+
+            <p class="proposal-text">
+                Through all these little moments,
+                smiles, memories and surprises...
+            </p>
+
+            <p class="proposal-text">
+                there is something I've been wanting
+                to ask you. 🥹
+            </p>
+
+            <div class="proposal-divider">
+                ✨ 💗 ✨
+            </div>
+
+            <h2>
+                Will you stay with me? 💗
+            </h2>
+
+            <p class="proposal-subtext">
+                Not just for today...<br>
+                but for all the beautiful moments
+                waiting ahead. 🌷
+            </p>
+
+            <!-- BUTTONS -->
+
+            <div class="proposal-buttons">
+
+                <button
+                    class="proposal-yes"
+                    id="yesButton"
+                    type="button"
+                >
+                    Yes, of course! 💗
+                </button>
+
+                <button
+                    class="proposal-maybe"
+                    id="maybeButton"
+                    type="button"
+                >
+                    Let me think... 🙈
+                </button>
+
+            </div>
+
+            <p
+                id="proposalMessage"
+                class="proposal-message"
+            ></p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="../js/main.js"></script>
+
+    <script>
+
+        const yesButton =
+            document.getElementById("yesButton");
+
+        const maybeButton =
+            document.getElementById("maybeButton");
+
+        const proposalMessage =
+            document.getElementById("proposalMessage");
+
+
+        /* =========================
+           YES BUTTON
+        ========================== */
+
+        yesButton.addEventListener("click", async () => {
+
+            // Prevent multiple clicks
+            yesButton.disabled = true;
+            maybeButton.disabled = true;
+
+            yesButton.textContent =
+                "YAYYYYY! 🥹💗";
+
+
+            /* =========================
+               BACKEND INTERACTION
+            ========================== */
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/interaction",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                action:
+                                    "Proposal YES button was clicked 💗"
+                            })
+                        }
+                    );
+
+                const data =
+                    await response.json();
+
+                console.log(
+                    "💗 Backend:",
+                    data.message
+                );
+
+            } catch (error) {
+
+                console.log(
+                    "Backend unavailable:",
+                    error
+                );
+
+            }
+
+
+            /* =========================
+               CELEBRATION MESSAGE
+            ========================== */
+
+            document.body.classList.add(
+                "yes-celebration"
+            );
+
+
+            proposalMessage.innerHTML = `
+                🥹💗
+                <br><br>
+                <strong>YAYYYYYYYYY!</strong>
+                <br>
+                You just made this little world magical. ✨
+            `;
+
+
+            /* =========================
+               HEART EXPLOSION
+            ========================== */
+
+            const hearts = [
+                "💗",
+                "💕",
+                "💖",
+                "💓",
+                "💞",
+                "💘",
+                "❤️"
+            ];
+
+
+            for (
+                let i = 0;
+                i < 40;
+                i++
+            ) {
+
+                const heart =
+                    document.createElement("span");
+
+                heart.className =
+                    "yes-explosion-heart";
+
+                heart.textContent =
+                    hearts[
+                        Math.floor(
+                            Math.random() *
+                            hearts.length
+                        )
+                    ];
+
+
+                heart.style.left = "50%";
+                heart.style.top = "50%";
+
+
+                heart.style.setProperty(
+                    "--x",
+                    `${(Math.random() - 0.5) * 600}px`
+                );
+
+                heart.style.setProperty(
+                    "--y",
+                    `${(Math.random() - 0.5) * 600}px`
+                );
+
+
+                heart.style.animationDelay =
+                    `${Math.random() * 0.25}s`;
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(() => {
+
+                    heart.remove();
+
+                }, 2200);
+
+            }
+
+
+            /* =========================
+               GO TO CELEBRATION PAGE
+            ========================== */
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "celebration.html";
+
+            }, 3200);
+
+        });
+
+
+        /* =========================
+           MAYBE BUTTON
+        ========================== */
+
+        maybeButton.addEventListener(
+            "click",
+            () => {
+
+                proposalMessage.textContent =
+                    "Hehe... take your time 🙈💗";
+
+
+                maybeButton.style.transform =
+                    `translate(
+                        ${(Math.random() - 0.5) * 80}px,
+                        ${(Math.random() - 0.5) * 40}px
+                    )`;
+
+            }
+        );
+
+    </script>
+
+
+    <!-- =========================
+         YES HEART EXPLOSION STYLE
+    ========================== -->
+
+    <style>
+
+        .yes-explosion-heart {
+
+            position: fixed;
+
+            left: 50%;
+            top: 50%;
+
+            z-index: 99999;
+
+            pointer-events: none;
+
+            font-size: 2rem;
+
+            animation:
+                yesHeartExplosion
+                2s
+                ease-out
+                forwards;
+
+        }
+
+
+        @keyframes yesHeartExplosion {
+
+            0% {
+
+                opacity: 1;
+
+                transform:
+                    translate(
+                        -50%,
+                        -50%
+                    )
+                    scale(0.4)
+                    rotate(0deg);
+
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        calc(-50% + var(--y))
+                    )
+                    scale(1.6)
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        .yes-celebration
+        .proposal-card {
+
+            animation:
+                proposalCelebration
+                0.8s
+                ease
+                forwards;
+
+        }
+
+
+        @keyframes proposalCelebration {
+
+            0% {
+
+                transform:
+                    scale(1);
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1.05);
+
+            }
+
+            100% {
+
+                transform:
+                    scale(1);
+
+            }
+
+        }
+
+
+        .proposal-message {
+
+            margin-top: 25px;
+
+            color: #d94f82;
+
+            font-size: 1.15rem;
+
+            line-height: 1.6;
+
+            min-height: 30px;
+
+        }
+
+
+        .proposal-message strong {
+
+            font-size: 1.7rem;
+
+        }
+
+
+        .proposal-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+
+        }
+
+
+        .proposal-yes,
+        .proposal-maybe {
+
+            border: none;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+        }
+
+
+        .proposal-yes:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.04);
+
+        }
+
+
+        .proposal-maybe:hover {
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        .proposal-yes:disabled,
+        .proposal-maybe:disabled {
+
+            cursor: not-allowed;
+
+            opacity: 0.75;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .proposal-buttons {
+
+                flex-direction: column;
+
+                width: 100%;
+
+            }
+
+            .proposal-yes,
+            .proposal-maybe {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</body>
+</html>

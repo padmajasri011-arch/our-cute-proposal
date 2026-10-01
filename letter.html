@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Letter 💌</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="letter-page">
+
+        <div class="letter-glow letter-glow-1"></div>
+        <div class="letter-glow letter-glow-2"></div>
+
+        <div class="letter-heart">💗</div>
+        <div class="letter-heart">💕</div>
+        <div class="letter-heart">💖</div>
+        <div class="letter-flower">🌸</div>
+        <div class="letter-flower">🌷</div>
+
+
+        <header class="letter-header">
+
+            <div class="chapter-pill">
+                💌 Chapter Four 💌
+            </div>
+
+            <h1>
+                A little letter...
+            </h1>
+
+            <p>
+                There's something I wanted to tell you.
+            </p>
+
+        </header>
+
+
+        <section class="letter-container">
+
+            <!-- Cute character -->
+            <div class="letter-character">
+                🐻
+            </div>
+
+
+            <!-- Envelope -->
+            <div
+                class="envelope-wrapper"
+                id="envelopeWrapper"
+            >
+
+                <div class="envelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="envelope-letter">
+
+                        <span>
+                            💌
+                        </span>
+
+                        <p>
+                            A little something
+                            for you...
+                        </p>
+
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap"></div>
+
+                    <div class="envelope-heart">
+                        💗
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Envelope instruction -->
+            <div
+                class="envelope-instruction"
+                id="envelopeInstruction"
+            >
+                💌 Tap the envelope to open it
+            </div>
+
+
+            <!-- Actual letter -->
+            <div
+                class="love-letter hidden-letter"
+                id="loveLetter"
+            >
+
+                <div class="letter-top-decoration">
+                    <span>🌸</span>
+                    <span>♡</span>
+                    <span>🌸</span>
+                </div>
+
+
+                <div class="letter-date">
+                    To someone very special... 💌
+                </div>
+
+
+                <h2>
+                    Hey you,
+                </h2>
+
+
+                <div class="letter-content">
+
+                    <p>
+                        If you're reading this, then you made it
+                        this far into my little world. 🥹
+                    </p>
+
+                    <p>
+                        And honestly...
+                        that already makes me smile.
+                    </p>
+
+                    <p>
+                        There are some people who enter our lives
+                        quietly and somehow become a beautiful
+                        part of our everyday thoughts.
+                    </p>
+
+                    <p class="letter-highlight">
+                        You're one of those people. 💗
+                    </p>
+
+                    <p>
+                        I wanted to create this tiny little website
+                        because sometimes ordinary words don't feel
+                        special enough.
+                    </p>
+
+                    <p>
+                        So I made you a whole little world instead. 🌸
+                    </p>
+
+                    <p>
+                        Every page, every heart, every tiny animation
+                        has one simple reason behind it...
+                    </p>
+
+                    <p class="letter-special">
+                        YOU. ✨
+                    </p>
+
+                </div>
+
+
+                <div class="letter-signature">
+
+                    <p>
+                        With a little bit of craziness,
+                        a lot of affection,
+                        and a very happy heart...
+                    </p>
+
+                    <span>
+                        — Someone who thinks you're pretty special 💗
+                    </span>
+
+                </div>
+
+
+                <div class="letter-bottom-decoration">
+                    🌷 💕 🌷
+                </div>
+
+            </div>
+
+
+            <!-- Continue -->
+            <a
+                href="proposal.html"
+                class="cute-button letter-button hidden-letter"
+                id="letterButton"
+            >
+                <span>
+                    There's One More Thing...
+                </span>
+
+                <span>
+                    👀
+                </span>
+            </a>
+
+
+            <p
+                class="letter-hint hidden-letter"
+                id="letterHint"
+            >
+                ✨ We're almost there ✨
+            </p>
+
+        </section>
+
+
+        <a href="gift.html" class="back-link">
+            ← Go back
+        </a>
+
+
+        <footer class="tiny-footer">
+            written with a whole lot of 💗
+        </footer>
+
+    </main>
+
+
+    <!-- Envelope interaction -->
+    <script>
+
+        const envelope =
+            document.getElementById("envelopeWrapper");
+
+        const instruction =
+            document.getElementById("envelopeInstruction");
+
+        const letter =
+            document.getElementById("loveLetter");
+
+        const button =
+            document.getElementById("letterButton");
+
+        const hint =
+            document.getElementById("letterHint");
+
+
+        envelope.addEventListener("click", () => {
+
+            envelope.classList.add("envelope-open");
+
+            instruction.textContent =
+                "💗 Opening something special...";
+
+            setTimeout(() => {
+
+                letter.classList.remove("hidden-letter");
+                letter.classList.add("letter-reveal");
+
+            }, 900);
+
+
+            setTimeout(() => {
+
+                button.classList.remove("hidden-letter");
+                hint.classList.remove("hidden-letter");
+
+            }, 1400);
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+    <!-- Your existing page content -->
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
