@@ -1,0 +1,12 @@
+{
+  "name": "our-cute-proposal",
+  "version": "1.0.0",
+  "description": "A cute interactive proposal website",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
